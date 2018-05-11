@@ -23,9 +23,23 @@ class TTransportErrorType {
   static const int ALREADY_OPEN = 2;
   static const int TIMED_OUT = 3;
   static const int END_OF_FILE = 4;
+
+  static Map<int, String> friendlyNamesFromType = {
+    UNKNOWN: 'UNKNOWN',
+    NOT_OPEN: 'NOT_OPEN',
+    ALREADY_OPEN: 'ALREADY_OPEN',
+    TIMED_OUT: 'TIMED_OUT',
+    END_OF_FILE: 'END_OF_FILE',
+  };
 }
 
 class TTransportError extends TError {
   TTransportError([int type = TTransportErrorType.UNKNOWN, String message = ""])
       : super(type, message);
+
+  @override
+  String errorName() => 'TTransportError';
+
+  @override
+  String typeDescriptor() => TTransportErrorType.friendlyNamesFromType[type];
 }

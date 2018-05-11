@@ -23,5 +23,23 @@ class TError extends Error {
 
   TError(this.type, this.message);
 
-  String toString() => "<TError type: $type message: '$message'>";
+  String toString() {
+    String descriptor = typeDescriptor() ?? '';
+    if (descriptor != '') {
+      descriptor = ' ($descriptor)';
+    }
+    return "<${errorName()} type: $type$descriptor message: '$message'>";
+  }
+
+  /// A textual value for this error to match the class.
+  ///
+  /// If provided, this will be included in [toString].
+  /// The reason for hardcoding instead of using reflection is so it does not
+  /// get minified.
+  String errorName() => 'TError';
+
+  /// A textual value for this error to match the [type].
+  ///
+  /// If provided, this will be included in [toString].
+  String typeDescriptor() => '';
 }
