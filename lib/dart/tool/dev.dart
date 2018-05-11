@@ -24,7 +24,9 @@ main(List<String> args) async {
 
   var directories = ['lib/', 'test/', 'tool/'];
   config.analyze.entryPoints = directories;
-  config.format.directories = directories;
+  config.format
+    ..lineLength = 80
+    ..paths = directories;
   config.copyLicense
     ..licensePath = 'LICENSE_HEADER'
     ..directories = directories;

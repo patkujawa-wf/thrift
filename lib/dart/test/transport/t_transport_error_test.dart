@@ -15,27 +15,20 @@
 // specific language governing permissions and limitations
 // under the License.
 
-library thrift.test.transport.t_transport_test;
+library thrift.test.t_transport_error_test;
 
 import 'package:test/test.dart';
 import 'package:thrift/thrift.dart';
 
-/// Common transport tests
 void main() {
-  group('TTransportFactory', () {
-    test('transport is returned from base factory', () async {
-      TTransport result;
-      TTransport transport = null;
+  group('TTransportError', () {
+    test('toString includes error name and type description', () {
+      var subject = new TTransportError(
+              TTransportErrorType.ALREADY_OPEN, 'custom message')
+          .toString();
 
-      var factory = new TTransportFactory();
-
-      result = await factory.getTransport(transport);
-      expect(result, isNull);
-
-      transport = new TBufferedTransport();
-      result = await factory.getTransport(transport);
-
-      expect(result, transport);
+      expect(subject, contains('ALREADY_OPEN'));
+      expect(subject, contains('TTransportError'));
     });
   });
 }

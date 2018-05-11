@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-library thrift.test.transport.t_socket_transport_test;
+library thrift.test.transport.t_http_transport_test;
 
 import 'dart:async';
 import 'dart:convert' show Encoding;
