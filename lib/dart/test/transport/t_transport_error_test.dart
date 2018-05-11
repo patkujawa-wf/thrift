@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-library thrift.test.t_application_error_test;
+library thrift.test.t_transport_error_test;
 
 import 'package:test/test.dart';
 import 'package:thrift/thrift.dart';
